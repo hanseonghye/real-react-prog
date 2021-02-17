@@ -5,7 +5,7 @@ const element = (
 )
 
 
-console.log(element) 
+console.log(element)
 
 const consoleLogResult = {
     type : 'a',
