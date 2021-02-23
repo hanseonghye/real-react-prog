@@ -1,7 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
 
-// eslint-disable-next-line react/prop-types
 export default function Tile({id, x, y, value, isMerged, isNew}) {
     return (
         <div

@@ -5,11 +5,9 @@ import {getInitTileList} from "../util/tile";
 import {MAX_POS} from "../constant";
 import Tile from "./Tile";
 
-// eslint-disable-next-line react/prop-types
 export default function Game({setScore}) {
     const [tileList, setTileList] = useState(getInitTileList)
     useMoveTile({tileList, setTileList, setScore})
-    console.log(tileList)
 
     return (
         <div className="game-container">

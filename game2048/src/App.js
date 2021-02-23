@@ -6,10 +6,11 @@ import Game from "./component/Game";
 
 export default function App() {
     const [score, setScore] = useState(0)
+    const [bestScore, setBestScore] = useState(0)
 
     return (
         <div className="container">
-            <Header score={score}/>
+            <Header score={score} bestScore={bestScore} />
             <AboveGame />
             <Game setScore={setScore}/>
         </div>
