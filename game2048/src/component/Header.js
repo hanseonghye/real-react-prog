@@ -1,11 +1,11 @@
 import React from 'react'
 
-export default function Header({Score, bestScore}) {
+export default function Header({score, bestScore}) {
     return (
         <header className="heading">
             <h1 className="title">2048</h1>
             <div className="scores-container">
-                <div className="score-container">{Score}</div>
+                <div className="score-container">{score}</div>
                 <div className="best-container">{bestScore}</div>
             </div>
         </header>
