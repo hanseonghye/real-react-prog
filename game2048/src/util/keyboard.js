@@ -3,10 +3,10 @@ import hotkeys from 'hotkeys-js'
 const observerMap = {}
 
 
-export function addKeyObserver(key, callback) {
+export function addKeyCallback(key, callback) {
     if (! observerMap[key]) {
         observerMap[key] = []
-        hotkeys(key, () => {})
+        hotkeys(key, () => executeCallbacks(key))
     }
 
     observerMap[key].push(callback)
@@ -14,6 +14,13 @@ export function addKeyObserver(key, callback) {
 
 
 export function removeKeyObserver(key, callback) {
-    observerMap[k
+    observerMap[key] = observerMap[key].filter(item => item !== callback)
 
+}
+
+
+function executeCallbacks(key) {
+    for( const ob of observerMap[key]) {
+        ob()
+    }
 }

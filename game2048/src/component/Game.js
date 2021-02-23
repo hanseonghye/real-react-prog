@@ -1,20 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 import times from 'lodash/times'
+import useMoveTile from "../hook/useMoveTile";
+import {getInitTileList} from "../util/tile";
 import {MAX_POS} from "../constant";
-import {useState} from "react/cjs/react.production.min";
-import {getInitTilaList} from "../util/tile";
+import Tile from "./Tile";
 
-export default function Game() {
-    // eslint-disable-next-line no-unused-vars
-    const [tileList, setTileList] = useState(getInitTilaList)
+// eslint-disable-next-line react/prop-types
+export default function Game({setScore}) {
+    const [tileList, setTileList] = useState(getInitTileList)
+    useMoveTile({tileList, setTileList, setScore})
+    console.log(tileList)
 
     return (
         <div className="game-container">
             <div className="grid-container">
-                {times(MAX_POS, () => (
-                    <div className="grid-row">
-                        {times(MAX_POS, () => (
-                            <div className="grid-cell"></div>
+                {times(MAX_POS, index => (
+                    <div key={index} className="grid-row">
+                        {times(MAX_POS, index2 => (
+                            <div key={index2} className="grid-cell"></div>
                         ))}
                     </div>
                 ))}
@@ -22,9 +25,7 @@ export default function Game() {
 
             <div className="tile-container">
                 {tileList.map(item => (
-                    <div key='' className={`tile tile-${item.value} tile-position-${item.x}-${item.y} tile-new`}>
-                        <div className="tile-inner">{item.value}</div>
-                    </div>
+                    <Tile key={item.id} {...item} />
                 ))}
             </div>
         </div>
