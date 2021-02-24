@@ -1,0 +1,15 @@
+import React, {createContext, useContext, useState} from 'react'
+
+
+function Greeting() {
+    const setUser = useContext(SetUserContext)
+    const { username, helloCount } = useContext(UserContext)
+
+    return (
+        <React.Fragment>
+            <p>{`${username}님 안녕하세요`}</p>
+            <p>{`${helloCount}번 인사함~~`}</p>
+            <button onClick={() => setUser({ username, helloCount: helloCount + 1})}>인사하기</button>
+        </React.Fragment>
+    )
+}
